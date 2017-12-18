@@ -1,12 +1,17 @@
 [general]
-ui = TTY.TTYUI
-accounts = Bighi
+ui = ttyui
+accounts = Bighi, Lasa
 fsync = False
+maxsyncaccounts = 2
 
 [Account Bighi]
 localrepository = Bighi-Local
 remoterepository = Bighi-Remote
-status_backend = sqlite
+postsynchook = notmuch new
+
+[Account Lasa]
+localrepository = Lasa-Local
+remoterepository = Lasa-Remote
 postsynchook = notmuch new
 
 [Repository Bighi-Local]
@@ -17,10 +22,11 @@ nametrans = lambda folder: {'drafts':  '[Gmail]/Drafts',
                             'flagged': '[Gmail]/Starred',
                             'trash':   '[Gmail]/Trash',
                             'archive': '[Gmail]/All Mail',
+			                      'rss': '[Gmail]/RSS'
                             }.get(folder, folder)
 
 [Repository Bighi-Remote]
-maxconnections = 1
+maxconnections = 2
 type = Gmail
 remoteuser = contato@leonardobighi.com
 remotepass = fkqtfsocgebpdqid
@@ -32,7 +38,24 @@ nametrans = lambda folder: {'[Gmail]/Drafts':    'drafts',
                             '[Gmail]/Starred':   'flagged',
                             '[Gmail]/Trash':     'trash',
                             '[Gmail]/All Mail':  'archive',
+                            '[Gmail]/RSS': 'rss',
                             }.get(folder, folder)
 folderfilter = lambda folder: folder not in ['[Gmail]/Trash',
                                              '[Gmail]/Spam',
                                              ]
+
+[Repository Lasa-Local]
+type = Maildir
+localfolders = ~/.mail/lasa.com.br
+
+[Repository Lasa-Remote]
+maxconnections = 2
+type = IMAP
+remoteuser = leblourenco@lasa.com.br
+remotepass = $lasa2017
+remotehost = outlook.office365.com
+remoteport = 993
+realdelete = no
+ssl = yes
+sslcacertfile = /etc/ssl/certs/ca-certificates.crt
+auth_mechanisms = GSSAPI, XOAUTH2, CRAM-MD5, PLAIN, LOGIN
