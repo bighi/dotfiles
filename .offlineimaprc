@@ -29,7 +29,7 @@ nametrans = lambda folder: {'drafts':  '[Gmail]/Drafts',
 maxconnections = 2
 type = Gmail
 remoteuser = contato@leonardobighi.com
-remotepass = fkqtfsocgebpdqid
+remotepass = INSERTPASSWORDHERE
 auth_mechanisms = LOGIN
 realdelete = yes
 sslcacertfile = /etc/ssl/certs/ca-certificates.crt
@@ -43,19 +43,3 @@ nametrans = lambda folder: {'[Gmail]/Drafts':    'drafts',
 folderfilter = lambda folder: folder not in ['[Gmail]/Trash',
                                              '[Gmail]/Spam',
                                              ]
-
-#[Repository Lasa-Local]
-#type = Maildir
-#localfolders = ~/.mail/lasa.com.br
-
-#[Repository Lasa-Remote]
-#maxconnections = 2
-#type = IMAP
-#remoteuser = leblourenco@lasa.com.br
-#remotepass = $lasa2017
-#remotehost = outlook.office365.com
-#remoteport = 993
-#realdelete = no
-#ssl = yes
-#sslcacertfile = /etc/ssl/certs/ca-certificates.crt
-#auth_mechanisms = GSSAPI, XOAUTH2, CRAM-MD5, PLAIN, LOGIN
