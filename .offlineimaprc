@@ -9,11 +9,6 @@ localrepository = Bighi-Local
 remoterepository = Bighi-Remote
 #postsynchook = notmuch new
 
-#[Account Lasa]
-#localrepository = Lasa-Local
-#remoterepository = Lasa-Remote
-#postsynchook = notmuch new
-
 [Repository Bighi-Local]
 type = Maildir
 localfolders = ~/.mail/leonardobighi.com
