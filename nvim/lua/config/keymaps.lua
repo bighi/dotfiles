@@ -5,7 +5,6 @@ map("n", "<leader>?", ":nohl<CR>", { desc = "Clear search highlights" })
 
 -- Edit config files
 map("n", "<leader>ev", "<cmd>e ~/.config/nvim/init.lua<CR>", { desc = "Edit init.lua" })
-map("n", "<leader>ec", "<cmd>Telehscope <CR>", { desc = "Edit lua configs" })
 
 -- Break current line
 map("n", "<CR>", "i<CR><Esc>", { desc = "Insert line break" })
@@ -49,4 +48,10 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 	callback = function()
 		vim.highlight.on_yank()
 	end,
+})
+
+-- Close some buffers with q
+vim.api.nvim_create_autocmd("FileType", {
+	pattern = { "help", "startuptime", "qf", "lspinfo", "man", "checkhealth" },
+	command = "noremap <buffer> q :bd<CR>",
 })
