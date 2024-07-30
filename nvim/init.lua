@@ -9,7 +9,7 @@ local opt = vim.opt
 opt.number = true
 opt.relativenumber = true
 
--- Hide mode message bar
+-- Hide mode from message bar
 opt.showmode = false
 
 -- tabs & indentation
