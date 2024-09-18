@@ -48,3 +48,6 @@ opt.scrolloff = 10
 
 -- Save undo history
 opt.undofile = true
+
+-- Mark columns 80 and 100
+opt.cc = { 80, 100 }

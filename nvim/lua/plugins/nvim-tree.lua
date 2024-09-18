@@ -2,7 +2,7 @@ return {
 	"nvim-tree/nvim-tree.lua",
 	dependencies = "nvim-tree/nvim-web-devicons",
 	keys = {
-		{ "<leader>ff", "<cmd>NvimTreeToggle<CR>", desc = "Toggle file explorer" },
+		{ "<leader>ff", "<cmd>NvimTreeToggle .<CR>", desc = "Toggle file explorer" },
 		{ "<leader>ep", "<cmd>NvimTreeToggle ~/.config/nvim/lua/plugins/<CR>", desc = "Toggle file explorer" },
 		{ "<leader>ec", "<cmd>NvimTreeToggle ~/.config/nvim/lua/config/<CR>", desc = "Toggle file explorer" },
 	},
@@ -15,7 +15,7 @@ return {
 
 		nvimtree.setup({
 			view = {
-				width = 35,
+				width = 55,
 				relativenumber = true,
 			},
 			-- change folder arrow icons

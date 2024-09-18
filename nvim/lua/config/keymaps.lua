@@ -12,7 +12,7 @@ map("n", "<CR>", "i<CR><Esc>", { desc = "Insert line break" })
 -- window management
 map("n", "<leader>sv", "<C-w>v", { desc = "Split window vertically" }) -- split window vertically
 map("n", "<leader>sh", "<C-w>s", { desc = "Split window horizontally" }) -- split window horizontally
-map("n", "<leader>=", "<C-w>=", { desc = "Make splits equal size" }) -- make split windows equal width & height
+map("n", "<leader>s=", "<C-w>=", { desc = "Make splits equal size" }) -- make split windows equal width & height
 map("n", "<leader>sc", "<cmd>close<CR>", { desc = "Close current split" }) -- close current split window
 map("n", "<leader>q", "<C-w>c")
 map("n", "<C-h>", "<C-w>h")
@@ -27,8 +27,13 @@ map("n", "<leader>tn", "<cmd>tabn<CR>", { desc = "Go to next tab" }) --  go to n
 map("n", "<leader>tp", "<cmd>tabp<CR>", { desc = "Go to previous tab" }) --  go to previous tab
 
 -- Copy and paste
-map("n", "<leader>y", '"+y', { desc = "Copy to system clipboard" })
-map("n", "<leader>p", '"+p', { desc = "Paste from system clipboard" })
+map({ "n", "v" }, "<leader>y", '"+y', { desc = "Copy to system clipboard" })
+map({ "n", "v" }, "<leader>Y", '"+Y', { desc = "Copy to system clipboard" })
+map({ "n", "v" }, "<leader>p", '"+p', { desc = "Paste from system clipboard" })
+map({ "n", "v" }, "<leader>P", '"+P', { desc = "Paste from system clipboard" })
+
+-- Auto-indent the whole file
+map("n", "<leader>=", "gg=G", { desc = "Auto-indent the whole file" })
 
 -- Quickfix
 map("n", "[q", "<cmd>cprevious<CR>")
@@ -52,6 +57,6 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 
 -- Close some buffers with q
 vim.api.nvim_create_autocmd("FileType", {
-	pattern = { "help", "startuptime", "qf", "lspinfo", "man", "checkhealth" },
+	pattern = { "help", "startuptime", "qf", "lspinfo", "man", "checkhealth", "fugitive", "fugitiveblame" },
 	command = "noremap <buffer> q :bd<CR>",
 })
