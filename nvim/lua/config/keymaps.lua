@@ -25,6 +25,7 @@ map("n", "<leader>to", "<cmd>tabnew<CR>", { desc = "Open new tab" }) -- open new
 map("n", "<leader>tc", "<cmd>tabclose<CR>", { desc = "Close current tab" }) -- close current tab
 map("n", "<leader>tn", "<cmd>tabn<CR>", { desc = "Go to next tab" }) --  go to next tab
 map("n", "<leader>tp", "<cmd>tabp<CR>", { desc = "Go to previous tab" }) --  go to previous tab
+map("n", "<leader>tf", "<cmd>tabnew %<CR>", { desc = "Open current buffer in new tab" }) --  move current buffer to new tab
 
 -- Copy and paste
 map({ "n", "v" }, "<leader>y", '"+y', { desc = "Copy to system clipboard" })

@@ -1,7 +1,9 @@
+-- Mason is a cross-platform package manager that provides an interface inside
+-- Neovim to quickly install many coding related tools like LSPs, linters, etc.
 return {
 	"williamboman/mason.nvim",
 	dependencies = {
-		"williamboman/mason-lspconfig.nvim",
+		"williamboman/mason-lspconfig.nvim", --It hooks into the LSP client configuration to make their installation with Mason work
 		"WhoIsSethDaniel/mason-tool-installer.nvim",
 	},
 	config = function()
@@ -26,7 +28,7 @@ return {
 		mason_lspconfig.setup({
 			-- list of servers for mason to install
 			ensure_installed = {
-				-- "tsserver",
+				"tsserver",
 				"ts_ls",
 				"html",
 				"cssls",
