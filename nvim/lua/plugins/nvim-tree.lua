@@ -3,8 +3,9 @@ return {
 	dependencies = "nvim-tree/nvim-web-devicons",
 	keys = {
 		{ "<leader>ff", "<cmd>NvimTreeToggle .<CR>", desc = "Toggle file explorer" },
-		{ "<leader>ep", "<cmd>NvimTreeToggle ~/.config/nvim/lua/plugins/<CR>", desc = "Toggle file explorer" },
-		{ "<leader>ec", "<cmd>NvimTreeToggle ~/.config/nvim/lua/config/<CR>", desc = "Toggle file explorer" },
+		{ "<leader>f0", "<cmd>NvimTreeFindFile<CR>", desc = "Find current file in nvim-tree" },
+		{ "<leader>ep", "<cmd>NvimTreeToggle ~/.config/nvim/lua/plugins/<CR>", desc = "Open plugins folder" },
+		{ "<leader>ec", "<cmd>NvimTreeToggle ~/.config/nvim/lua/config/<CR>", desc = "Open config folder" },
 	},
 	config = function()
 		local nvimtree = require("nvim-tree")
@@ -37,10 +38,14 @@ return {
 			-- window splits
 			actions = {
 				open_file = {
+					quit_on_open = true,
 					window_picker = {
 						enable = false,
 					},
 				},
+			},
+			update_focused_file = {
+				enable = true,
 			},
 			filters = {
 				custom = { ".DS_Store" },

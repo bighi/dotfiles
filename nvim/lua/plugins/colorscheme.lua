@@ -1,8 +1,9 @@
 return {
-	"ray-x/aurora",
+	-- "ray-x/aurora",
+	"p00f/alabaster.nvim",
 	lazy = false,
 	priority = 1000,
 	config = function()
-		vim.cmd("colorscheme aurora")
+		vim.cmd("colorscheme alabaster")
 	end,
 }
