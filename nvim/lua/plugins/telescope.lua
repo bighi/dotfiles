@@ -6,16 +6,23 @@ return {
 		"nvim-tree/nvim-web-devicons",
 		"folke/todo-comments.nvim",
 	},
-	keys = {
-		{ "<leader>fs", "<cmd>Telescope find_files<cr>", desc = "Fuzzy find files in cwd" },
-		{ "<leader>fr", "<cmd>Telescope oldfiles<cr>", desc = "Fuzzy find recent files" },
-		{ "<leader>fg", "<cmd>Telescope live_grep<cr>", desc = "Find string in cwd" },
-		{ "<leader>b", "<cmd>Telescope buffers<CR>", desc = "Find open buffers" },
-
-		-- edit config files
-		-- { "<leader>ec", "<cmd>Telescope find_files cwd=~/.config/nvim/lua/config/<CR>", desc = "Edit config folder" },
-		-- { "<leader>ep", "<cmd>Telescope find_files cwd=~/.config/nvim/lua/plugins/<CR>", desc = "Edit plugins folder" },
-	},
+	keys = function()
+		local lazy_telescope = function(builtin)
+			return function(...)
+				require("telescope.builtin")[builtin](...)
+			end
+		end
+		return {
+			{ "<leader>fs", lazy_telescope("find_files"), desc = "Fuzzy find files in cwd" },
+			{ "<leader>fr", lazy_telescope("oldfiles"), desc = "Fuzzy find recent files" },
+			{ "<leader>fg", lazy_telescope("live_grep"), desc = "Fuzzy string in cwd" },
+			{ "<leader>b", lazy_telescope("buffers"), desc = "Fuzzy open buffers" },
+			{ "<leader>fh", lazy_telescope("help_tags"), desc = "Find help tags" },
+			{ "<leader>fs", lazy_telescope("find_files"), desc = "Fuzzy find files in cwd" },
+			{ "<leader>fw", lazy_telescope("grep_string"), desc = "Find word in current buffer" },
+			{ "<leader>f/", lazy_telescope("current_buffer_fuzzy_find"), desc = "Fuzzy match in current buffer" },
+		}
+	end,
 	config = function()
 		local telescope = require("telescope")
 		local actions = require("telescope.actions")
